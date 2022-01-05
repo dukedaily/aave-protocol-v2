@@ -35,7 +35,6 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
 
       const { LendingPool, LendingPoolConfigurator } = poolConfig;
 
-      /*
       // Reuse/deploy lending pool implementation
       let lendingPoolImplAddress = getParamPerNetwork(LendingPool, network);
       if (!notFalsyOrZeroAddress(lendingPoolImplAddress)) {
@@ -47,12 +46,10 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
       console.log('\tSetting lending pool implementation with address:', lendingPoolImplAddress);
       // Set lending pool impl to Address provider
       await waitForTx(await addressesProvider.setLendingPoolImpl(lendingPoolImplAddress));
-      */
 
       const address = await addressesProvider.getLendingPool();
       const lendingPoolProxy = await getLendingPool(address);
 
-      /*
       await insertContractAddressInDb(eContractid.LendingPool, lendingPoolProxy.address);
 
       // Reuse/deploy lending pool configurator
@@ -71,7 +68,6 @@ task('full:deploy-lending-pool', 'Deploy lending pool for dev enviroment')
         await addressesProvider.setLendingPoolConfiguratorImpl(lendingPoolConfiguratorImplAddress)
       );
 
-      */
       console.log('111111111');
       const lendingPoolConfiguratorProxy = await getLendingPoolConfiguratorProxy(
         await addressesProvider.getLendingPoolConfigurator()
